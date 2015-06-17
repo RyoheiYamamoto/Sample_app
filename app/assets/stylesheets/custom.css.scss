@@ -81,6 +81,11 @@ p {
   }
 }
 
+.selected {
+    color: white !important;
+    text-decoration: none;
+}
+
 /* footer */
 
 footer {
@@ -169,11 +174,12 @@ aside {
 }
 
 .user_avatars {
+  img.carrier{
+    width: 30px;
+    height: 30px;
+  }
   overflow: auto;
   margin-top: 10px;
-  .gravatar {
-    margin: 1px 1px;
-  }
 }
 
 /* forms */
@@ -209,6 +215,10 @@ input {
   list-style: none;
   margin: 0;
   li {
+    img.carrier{
+      width: 50px;
+      height: 50px;
+    }
     overflow: auto;
     padding: 10px 0;
     border-top: 1px solid $grayLighter;
@@ -225,15 +235,29 @@ input {
   margin: 10px 0 0 0;
 
   li {
-    padding: 10px 0;
+    padding: 20px 0;
     border-top: 1px solid #e8e8e8;
+    a {
+      img.carrier{
+        width: 70px;
+        height: 70px;
+        display: block;
+        float: left;
+        padding: 0 10px;
+        /* top-down-center */
+/*        position: absolute;
+        margin: auto;*/
+      }
+    }
   }
+
 }
 .content {
   display: block;
 }
 .timestamp {
   color: $grayLight;
+  display: block;
 }
 .gravatar {
   float: left;

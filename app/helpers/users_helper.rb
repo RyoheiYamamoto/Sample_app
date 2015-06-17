@@ -7,4 +7,14 @@ module UsersHelper
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
+
+  def carrier_for(user)
+  	if user.image?
+    	image_tag(user.image_url(:thumb_large).to_s, alt: user.name, class: "carrier")
+    else
+    	image_tag('no_image.png', alt: user.name, class: "carrier")
+    end 
+    		
+
+  end
 end
