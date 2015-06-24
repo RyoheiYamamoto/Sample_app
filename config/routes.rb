@@ -3,8 +3,7 @@ SampleApp::Application.routes.draw do
     member do
       get :following, :followers
     end
-  end
-  
+  end  
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
@@ -45,13 +44,13 @@ SampleApp::Application.routes.draw do
 
   # Example resource route with sub-resources:
   #   resources :products do
-  #     resources :comments, :sales
+  #     resources :contents, :sales
   #     resource :seller
   #   end
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
-  #     resources :comments
+  #     resources :contents
   #     resources :sales do
   #       get 'recent', on: :collection
   #     end

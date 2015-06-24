@@ -1,6 +1,23 @@
 <% if signed_in? %>
+
+<!-- <head>
+  <%= stylesheet_link_tag "style" %>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <%= javascript_include_tag "blocksit" %>
+  <script>
+  $(window).ready(function() {
+  $('#container').BlocksIt({
+        numOfCol: 5,
+        offsetX: 8,
+        offsetY: 8,
+        blockElement: '.grid'
+  });
+  });
+  </script>
+</head> -->
+
   <div class="row">
-    <aside class="span4">
+    <aside class="span4 fixed_left">
       <section>
         <%= render 'shared/user_info' %>
       </section>
@@ -11,14 +28,23 @@
         <%= render 'shared/micropost_form' %>
       </section>
     </aside>
-    <div class="span8">
+    <div class="span8 fixed_right">
       <h3>Micropost Feed</h3>
+
+<!--   <div class="grid">
+    <div class="imgholder">
+      <%= image_tag("no_image.png") %>    </div>
+    <strong>Title01</strong>
+    <p>コンテンツ...</p>
+    <div class="meta">by name</div>
+  </div> -->
+
       <%= render 'shared/feed' %>
     </div>
   </div>
 <% else %>
   <div class="center hero-unit">
-    <h1>Welcome to the Sample App</h1>
+    <h1>Welcome to the Sample app</h1>
 
     <h2>
     This is the home page for the

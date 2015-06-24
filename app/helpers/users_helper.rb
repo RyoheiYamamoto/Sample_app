@@ -13,8 +13,7 @@ module UsersHelper
     	image_tag(user.image_url(:thumb_large).to_s, alt: user.name, class: "carrier")
     else
     	image_tag('no_image.png', alt: user.name, class: "carrier")
-    end 
-    		
-
+    end
+	
   end
 end

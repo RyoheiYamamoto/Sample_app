@@ -1,24 +1,24 @@
 <% provide(:title, @title) %>
 <div class="row">
-  <aside class="span4">
-    <section>
+  <aside class="span4 fixed_left">
+    <section> 
       <%= carrier_for @user %>
       <h1><%= @user.name %></h1>
-      <span><%= link_to "view my profile", @user %></span>
+      <span><%= link_to "view  profile", @user %></span>
       <span><b>Microposts:</b> <%= @user.microposts.count %></span>
     </section>
     <section>
       <%= render 'shared/stats' %>
-      <% if @users.any? %>
+<!--       <% if @users.any? %>
         <div class="user_avatars">
           <% @users.each do |user| %>
             <%= link_to (carrier_for user) , user %>
           <% end %>
         </div>
-      <% end %>
+      <% end %> -->
     </section>
   </aside>
-  <div class="span8">
+  <div class="span8 fixed_right">
     <h3><%= @title %></h3>
     <% if @users.any? %>
       <ul class="users">
