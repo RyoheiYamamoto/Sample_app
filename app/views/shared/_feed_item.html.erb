@@ -1,19 +1,28 @@
-<li id="<%= feed_item.id %>">
-  <!-- user comment -->
-  <%= link_to (carrier_for feed_item.user), feed_item.user %>
-  <%= link_to (carrier_for_item_image feed_item), feed_item %>
-  <span class="user">
-    <%= link_to feed_item.user.name, feed_item.user %>
-  </span>
-  <span class="content"><%= feed_item.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
-  </span>
-
-  <!-- confirm admin -->
-  <% if current_user?(feed_item.user) %>
-    <%= link_to "delete", feed_item, method: :delete,
-                                     data: { confirm: "You sure?" },
-                                     title: feed_item.content %>
-  <% end %>
-</li>
+<div class="box col2">
+  <div id="<%= feed_item.id %>">
+      <!-- user comment -->
+      <div>
+      <%= carrier_for_item_image feed_item %>
+      </div>
+      <span class="content"><%= feed_item.content %></span>
+      <span class="timestamp">
+        Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+      </span>
+      <div class ="user_box">
+        <span class = "item_avatar">
+        <%= link_to (carrier_for feed_item.user), feed_item.user %>
+        </span>
+        <span class="item_user">
+          <%= link_to feed_item.user.name, feed_item.user %>
+        </span>
+        <!-- confirm admin -->
+        <% if current_user?(feed_item.user) %>
+          <span class="delete_micropost">
+            <%= link_to "delete", feed_item, method: :delete,
+                                             data: { confirm: "You sure?" },
+                                             title: feed_item.content %>
+          </span>
+        <% end %>
+      </div>
+  </div>
+</div>

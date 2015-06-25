@@ -15,6 +15,8 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+//= require masonry/jquery.masonry
+//= require masonry/jquery.infinitescroll.min
 
 function delaySlideUP(){
     setTimeout('$(".alert").slideUp()',2000);  	  	

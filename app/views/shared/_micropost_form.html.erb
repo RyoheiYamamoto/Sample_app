@@ -1,7 +1,7 @@
 <%= form_for @micropost do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-	<%= f.label :select_image %>save
+	<%= f.label :select_image %>
   	<%= f.file_field :item_image %>
 	<%= f.label :item_name %>
 	  <%= f.text_field :item_name %>

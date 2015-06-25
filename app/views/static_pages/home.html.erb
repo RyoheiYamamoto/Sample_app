@@ -1,23 +1,7 @@
 <% if signed_in? %>
 
-<!-- <head>
-  <%= stylesheet_link_tag "style" %>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <%= javascript_include_tag "blocksit" %>
-  <script>
-  $(window).ready(function() {
-  $('#container').BlocksIt({
-        numOfCol: 5,
-        offsetX: 8,
-        offsetY: 8,
-        blockElement: '.grid'
-  });
-  });
-  </script>
-</head> -->
-
   <div class="row">
-    <aside class="span4 fixed_left">
+    <aside class="left_box">
       <section>
         <%= render 'shared/user_info' %>
       </section>
@@ -28,18 +12,12 @@
         <%= render 'shared/micropost_form' %>
       </section>
     </aside>
-    <div class="span8 fixed_right">
+    <div class="right_box col-lg-9 col-md-8 col-sm-8 col-xs-8">
       <h3>Micropost Feed</h3>
-
-<!--   <div class="grid">
-    <div class="imgholder">
-      <%= image_tag("no_image.png") %>    </div>
-    <strong>Title01</strong>
-    <p>コンテンツ...</p>
-    <div class="meta">by name</div>
-  </div> -->
-
-      <%= render 'shared/feed' %>
+      <div class="clearfix" id="masonry-container">
+        <%= render 'shared/feed' %>        
+      </div>
+      <%= will_paginate @feed_items %>
     </div>
   </div>
 <% else %>

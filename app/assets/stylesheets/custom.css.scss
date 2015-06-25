@@ -62,19 +62,29 @@ p {
   line-height: 1.7em;
 }
 
-.fixed_left {
-    position: fixed;
-    float: left;
+.left_box {
+  width:250px;
+  float: left;
+  display: inline-block;
 }
 
-.fixed_right {
-    float: right;
+.right_box {
+  display: inline-block;
 }
 
-.con{
-  width: 940px ;
+.container{
+  width: 90%;
 }
 /* header */
+
+/*header{
+  background: #8B0000 !important;
+  border-bottom: #8B0000 !important;
+}
+.navbar-inner{
+ background: #8B0000 !important;
+ border-bottom: #8B0000 !important;
+}*/
 
 #logo {
   float: left;
@@ -194,7 +204,6 @@ aside {
   }
 }
 
-
 .user_avatars {
   img.carrier{
     width: 30px;
@@ -203,10 +212,31 @@ aside {
   overflow: auto;
   margin-top: 10px;
 }
-
-.carrier_for_item_image{
-    width: 400px;
-    height: 400px;
+.item_avatar{
+  a {
+    img.carrier{
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      margin-top: 3px;
+    }
+  }
+}
+.item_user{
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 3px;
+}
+.delete_micropost{
+  float:right;
+  margin-top: 20px;
+  display: inline-block;
+}
+.user_box{
+  border-top: 1px solid $grayLighter;
+}
+img.carrier_for_item_image{
+  border: 2px $grayLighter solid;
 }
 /* forms */
 
@@ -253,7 +283,9 @@ input {
     }
   }
 }
-
+#micropost_item_image{
+  width: 250px;
+}
 /* microposts */
 
 .microposts {
@@ -277,8 +309,13 @@ input {
     }
   }
 }
+
 .content {
+  font-size: 11pt;
   display: block;
+  word-wrap:break-word;
+  margin: 10px 10px 3px 3px;
+  line-height: 120%;
 }
 .timestamp {
   color: $grayLight;
@@ -293,4 +330,16 @@ aside {
     height: 100px;
     margin-bottom: 5px;
   }
+}
+
+.box{
+  
+}
+
+.clearfix{
+  overflow: auto !important;
+}
+
+article ul{
+  width: 20%;
 }
