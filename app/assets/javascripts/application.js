@@ -21,3 +21,10 @@
 function delaySlideUP(){
     setTimeout('$(".alert").slideUp()',2000);  	  	
   }
+var _isHave;
+
+function itemHave(_isHave){
+  console.log("yahoo");
+  _isHave = !_isHave;
+  return _isHave;
+}

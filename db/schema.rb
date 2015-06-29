@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618120625) do
+ActiveRecord::Schema.define(version: 20150625055512) do
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150618120625) do
     t.datetime "updated_at"
     t.string   "item_image"
     t.string   "item_name"
+    t.boolean  "item_have",  default: false
   end
 
   create_table "relationships", force: true do |t|
