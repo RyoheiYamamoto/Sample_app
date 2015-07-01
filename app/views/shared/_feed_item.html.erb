@@ -19,11 +19,7 @@
         <span class="item_user">
           <%= link_to feed_item.user.name, feed_item.user %>
         </span>
-        
-        <span class="item_have">
-          <%= link_to "★", micropost_path(feed_item) , :method => "PATCH" %>
-        </span>
-        
+                
         <span>
           <div id="favorite_form">
             <% if current_user.favorite?(feed_item) %>
