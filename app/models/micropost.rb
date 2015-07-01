@@ -6,8 +6,8 @@ class Micropost < ActiveRecord::Base
   mount_uploader :item_image, ImageUploader
 
   #お気に入りアイテムの追記
-  has_many :favorite_items, foreign_key: "item_id", dependent: :destroy
-  has_many :users, through: :favorite_items, source: :user
+  has_many :favorite_items, foreign_key: "faved_id", dependent: :destroy
+  has_many :favollers, through: :favorite_items, source: :favoller
 
   # 与えられたユーザーがフォローしているユーザー達のマイクロポストを返す。
   def self.from_users_followed_by(user)

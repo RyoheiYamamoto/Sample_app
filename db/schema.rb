@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629030006) do
+ActiveRecord::Schema.define(version: 20150701060533) do
 
   create_table "favorite_items", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "micropost_id"
+    t.integer  "favoller_id"
+    t.integer  "faved_id"
     t.boolean  "check_item"
     t.boolean  "want_item"
     t.boolean  "have_item"
@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 20150629030006) do
     t.datetime "updated_at"
   end
 
-  add_index "favorite_items", ["micropost_id"], name: "index_favorite_items_on_micropost_id"
-  add_index "favorite_items", ["user_id", "micropost_id"], name: "index_favorite_items_on_user_id_and_micropost_id", unique: true
-  add_index "favorite_items", ["user_id"], name: "index_favorite_items_on_user_id"
+  add_index "favorite_items", ["faved_id"], name: "index_favorite_items_on_faved_id"
+  add_index "favorite_items", ["favoller_id", "faved_id"], name: "index_favorite_items_on_favoller_id_and_faved_id", unique: true
+  add_index "favorite_items", ["favoller_id"], name: "index_favorite_items_on_favoller_id"
 
   create_table "microposts", force: true do |t|
     t.string   "content"

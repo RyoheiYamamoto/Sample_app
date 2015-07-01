@@ -2,20 +2,20 @@ class FavoriteItemsController < ApplicationController
   before_action :signed_in_user
 
   def create
-    @favorite = FavoriteItem.find(params[:favorite_items][:micropost])
+    @favorite = Micropost.find(params[:favorite_item][:faved_id])
     current_user.favorite!(@favorite)
     respond_to do |format|
-      format.html{ redirect_to @user}
+      format.html{ redirect_to root_path}
       format.js
     end
   end
 
   def destroy
-    @favorite = FavoriteItem.find_by(params[:id])
+    @favorite = FavoriteItem.find(params[:id]).faved_id
+    current_user.unfavorite!(@favorite)
     respond_to do |format|
-      format.html{ redirect_to @user}
-      format.js
+      format.html{ redirect_to root_path}
+      format.js 
     end
   end
-
 end

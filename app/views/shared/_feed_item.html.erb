@@ -4,23 +4,45 @@
       <div>
       <%= carrier_for_item_image feed_item %>
       </div>
+
       <span class="content"><%= feed_item.content %></span>
+      
       <span class="timestamp">
         Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
       </span>
+      
       <div class ="user_box">
         <span class = "item_avatar">
         <%= link_to (carrier_for feed_item.user), feed_item.user %>
         </span>
+        
         <span class="item_user">
           <%= link_to feed_item.user.name, feed_item.user %>
         </span>
+        
         <span class="item_have">
           <%= link_to "★", micropost_path(feed_item) , :method => "PATCH" %>
         </span>
+        
         <span>
-          <%= render 'favorite_item/favorite_form' %>
+          <div id="favorite_form">
+            <% if current_user.favorite?(feed_item) %>
+              <!-- お気に入り解除 -->
+              <%= form_for(current_user.favorite_items.find_by(faved_id: feed_item.id),
+              html: { method: :delete }) do |f| %>
+              <div><%= f.hidden_field :faved_id %></div>
+              <%= f.submit "Unfavorite", class: "btn btn-large" %>
+              <% end %>
+            <% else %>
+              <!-- お気に入りにする -->
+              <%= form_for(current_user.favorite_items.build(faved_id: feed_item.id)) do |f| %>
+              <div><%= f.hidden_field :faved_id %></div>
+              <%= f.submit "favorite!", class: "btn btn-large btn-primary" %>
+              <% end %>
+            <% end %>
+          </div>
         </span>
+        
         <!-- confirm admin -->
         <% if current_user?(feed_item.user) %>
           <span class="delete_micropost">

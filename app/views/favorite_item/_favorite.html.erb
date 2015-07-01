@@ -1,5 +1,6 @@
-<%= form_for(current_user.favorite_items.build(user_id: current_user.id)) do |f| %>
-  <div><%= f.hidden_field :user_id %></div>
-  <!-- ボタン部分をあとで考える -->
-  <%= f.submit "favorite!", class: "btn btn-large btn-primary" %>
+<!-- お気に入りにする -->
+<%= form_for(current_user.favorite_items.build(faved_id: feed_item.id),remote: true) do |f| %>
+<div><%= f.hidden_field :faved_id %></div>
+<%= f.submit "favorite!", class: "btn btn-large btn-primary" %>
+<% end %>
 <% end %>

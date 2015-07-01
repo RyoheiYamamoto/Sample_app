@@ -17,8 +17,8 @@ class User < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   #お気に入りアイテムの追記
-  has_many :favorite_items, foreign_key: "user_id", dependent: :destroy
-  has_many :items, through: :favorite_items, source: :item  
+  has_many :favorite_items, foreign_key: "favoller_id", dependent: :destroy
+  has_many :faveds, through: :favorite_items, source: :faved
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
@@ -43,18 +43,18 @@ class User < ActiveRecord::Base
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id).destroy
   end
-  
+
   # お気に入りアイテム
   def favorite?(other_item)
-    favorite_items.find_by(micropost_id: other_item)
+    favorite_items.find_by(faved_id: other_item.id)
   end
   
   def favorite!(other_item)
-    favorite_items.create!(micropost_id: other_item)
+    favorite_items.create!(faved_id: other_item.id)
   end
 
-  def unfavorite(other_item)
-    favorite_items.find_by(micropost_id: other_item).destory
+  def unfavorite!(other_item)
+    favorite_items.find_by(faved_id: other_item).destroy
   end
 
   private
