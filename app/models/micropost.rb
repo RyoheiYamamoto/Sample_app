@@ -5,11 +5,19 @@ class Micropost < ActiveRecord::Base
   validates :user_id, presence: true
   mount_uploader :item_image, ImageUploader
 
+  #お気に入りアイテムの追記
+  has_many :favorite_items, foreign_key: "item_id", dependent: :destroy
+  has_many :users, through: :favorite_items, source: :user
+
   # 与えられたユーザーがフォローしているユーザー達のマイクロポストを返す。
   def self.from_users_followed_by(user)
     followed_user_ids = "SELECT followed_id FROM relationships
                          WHERE follower_id = :user_id"
     where("user_id IN (#{followed_user_ids}) OR user_id = :user_id",
           user_id: user.id)
+  end
+
+  def favorite_for(user)
+    favorite_items.find_by(user_id: user)
   end
 end

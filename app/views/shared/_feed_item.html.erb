@@ -18,6 +18,9 @@
         <span class="item_have">
           <%= link_to "★", micropost_path(feed_item) , :method => "PATCH" %>
         </span>
+        <span>
+          <%= render 'favorite_item/favorite_form' %>
+        </span>
         <!-- confirm admin -->
         <% if current_user?(feed_item.user) %>
           <span class="delete_micropost">

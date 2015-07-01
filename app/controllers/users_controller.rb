@@ -60,6 +60,12 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def favorite
+    @user = User.find(params[:user_id]);
+    @item = Micropost.find(params[:item_id]);
+    # render 'favorite'
+  end
+
   private
 
     def user_params

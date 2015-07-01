@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
   mount_uploader :image, ImageUploader
 
+  #お気に入りアイテムの追記
+  has_many :favorite_items, foreign_key: "user_id", dependent: :destroy
+  has_many :items, through: :favorite_items, source: :item  
+
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
@@ -40,6 +44,19 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id).destroy
   end
   
+  # お気に入りアイテム
+  def favorite?(other_item)
+    favorite_items.find_by(micropost_id: other_item)
+  end
+  
+  def favorite!(other_item)
+    favorite_items.create!(micropost_id: other_item)
+  end
+
+  def unfavorite(other_item)
+    favorite_items.find_by(micropost_id: other_item).destory
+  end
+
   private
 
     def create_remember_token
