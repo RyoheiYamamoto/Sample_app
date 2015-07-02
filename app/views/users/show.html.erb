@@ -1,23 +1,23 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="span4 fixed_left">
+  <div class="profile">
     <section>
       <h1>
         <%= carrier_for @user %><br>
         <%= @user.name %>
       </h1>
-    </section>
-    <section>
       <%= render 'shared/stats' %>
     </section>
   </aside>
-  <div class="span8 fixed_right">
+  <div class="own-box col-lg-9 col-md-8 col-sm-8 col-xs-8">
     <%= render 'follow_form' if signed_in? %>
     <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
+      <h3>I Want! (<%= @user.microposts.count %>)</h3>
+      <div class="clearfix" id="masonry-container">
+        <div class="microposts">
+          <%= render @microposts %>
+        </div>
+      </div>
       <%= will_paginate @microposts %>
     <% end %>
   </div>

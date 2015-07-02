@@ -10,7 +10,7 @@ module UsersHelper
 
   def carrier_for(user)
   	if user.image?
-    	image_tag(user.image_url(:thumb_large).to_s, alt: user.name, class: "carrier")
+    	image_tag(user.image_url.to_s, alt: user.name, class: "carrier")
     else
     	image_tag('no_image.png', alt: user.name, class: "carrier")
     end
